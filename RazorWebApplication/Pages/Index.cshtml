@@ -1,0 +1,55 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<div class="text-center">
+    <h1 class="display-4" onclick="hideMenu()">Рандом</h1>
+    <p>
+        @if (@Model.MessageTitle != null)
+        {
+            foreach (var a in Model.MessageTitle)
+            {
+                @a
+            }
+        }
+    </p>
+    <h5>
+        <textarea cols="60" rows="30">
+        @*<pre>*@
+@if (@Model.Message != null)
+{
+    foreach (var a in Model.Message)
+    {
+        @a
+    }
+}
+    @*</pre>*@
+    </textarea>
+    </h5>
+</div>
+
+<form method="post">
+    <div class="layer1">
+        <p></p>
+        <div id="btns">
+            <p style="color: red; text-align: center;">
+                <label class="checkbox-btn">
+                    <input type="checkbox" onclick="moreDetailed()" id="flipflop" unchecked />
+                    <span style="line-height: 30px;">Все песни</span>
+                </label>
+                <input class="ib" style="color: red; line-height: 50px; text-align: center;" type="submit" value="=Ищем песню=" />
+            </p>
+            @for (var i = 1; i <= Model.GenresCount; i++)
+            {
+                <label class="checkbox-btn">
+                    <input type="checkbox" name="AreChecked" value="@i" @Model.GenresChecked[i - 1]>
+                    <span style="line-height: 30px;">@Model.GenresNames[i - 1]</span>
+                </label>
+            }
+
+        </div>
+    </div>
+</form>

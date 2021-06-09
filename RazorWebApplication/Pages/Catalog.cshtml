@@ -1,0 +1,33 @@
+﻿@page
+@model RandomSongSearchEngine.Pages.CatalogModel
+@{
+}
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<div class="row">
+    <p style="margin-left: 12%">Всего песен: @Model.SongsCount &nbsp; Страница: @Model.PageNumber &nbsp; </p>
+    <p></p>
+
+    <p></p>
+    <table class="table">
+        <thead class="thead-dark ">
+            <tr>
+                <th width="10%"></th>
+                <th width="80%">
+                    <form method="post">
+                        <button name="NavigationButtons" value="1" class="btn btn-info" asp-route-id=@Model.PageNumber>&lt;Назад</button>
+                        <button name="NavigationButtons" value="2" class="btn btn-info" asp-route-id=@Model.PageNumber>Вперёд&gt;</button>
+                    </form>
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var a in Model.TitleAndTextID)
+            {
+                <tr class="d-sm-table-row "><td></td><td><a asp-page-handler="redirect" asp-route-id=@a.Item2>@a.Item1</a></td></tr>
+            }
+
+        </tbody>
+    </table>
+</div>

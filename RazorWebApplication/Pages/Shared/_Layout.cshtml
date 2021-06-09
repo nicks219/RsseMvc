@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - RazorWebApplication</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <script type="text/javascript">
+        //check for Navigation Timing API support, 50% efficiency =)
+        if (window.performance) {
+            //window.performance works fine on this browser
+            if (performance.navigation.type == 1) {
+                //This page is reloaded
+                document.location.href = "@Url.Page("Index")";
+            }
+            if (performance.navigation.type == 2) {
+                //This page is returned
+                document.location.href = "@Url.Page("Index")";
+            }
+        }
+        //console.info("0: This page is not reloaded");
+    </script>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-page="/Index">Рандом</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/AddText">Добавить</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/ChangeText" asp-route-id=@Model.SavedTextId>Поменять</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Catalog" asp-route-id=1>Каталог</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <input type="checkbox" style="visibility: hidden" id="hider" unchecked />
+
+    <div class="container">
+        <!---->
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
+
+<style>
+    .layer1 {
+        position: absolute; /*было fixed потом static*/
+        width: 350px;
+        left: 10%;
+        top: 17%;
+        text-align: left;
+    }
+
+    .checkbox-btn span, .ib {
+        font-weight: 900;
+        border: 1px solid #000;
+        padding: 0px 10px;
+        border-radius: 10px;
+        transition: background 0.5s ease;
+    }
+
+    .checkbox-btn input[type=checkbox]:not(:checked) + span {
+        opacity: 0.9;
+        background: #e0e0e0;
+    }
+
+    .checkbox-btn input[type=checkbox]:checked + span {
+        opacity: 1;
+        background: #17a2b8;
+    }
+</style>

@@ -1,0 +1,40 @@
+{
+    "iisSettings": {
+        "windowsAuthentication": false,
+        "iis": {
+            "anonymousAuthentication": false,
+            "applicationUrl": "http://localhost/RazorWebApplication",
+            "sslPort": 0
+        },
+        "iisExpress": {
+            "anonymousAuthentication": true,
+            "applicationUrl": "http://localhost:51006",
+            "sslPort": 0
+        }
+    },
+    "profiles": {
+        "IIS Express": {
+            "commandName": "IISExpress",
+            "launchBrowser": true,
+            "environmentVariables": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            }
+        },
+        "RazorWebApplication": {
+            "commandName": "Project",
+            "launchBrowser": true,
+            "environmentVariables": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            },
+            "applicationUrl": "http://localhost:5000"
+        },
+        "Production": {
+            "commandName": "Project",
+            "launchBrowser": true,
+            "environmentVariables": {
+                "ASPNETCORE_ENVIRONMENT": "Production"
+            },
+            "applicationUrl": "http://localhost:5000"
+        }
+    }
+}

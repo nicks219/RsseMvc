@@ -1,0 +1,50 @@
+﻿@page
+@model RandomSongSearchEngine.Pages.AddTextModel
+@{
+
+}
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<form method="post">
+
+    <div class="text-center">
+        <h1 class="display-4" onclick="hideMenu()">Добавить</h1>
+        <textarea name="TitleFromHtml" cols="50" rows="1" wrap="hard">
+        @if (@Model.MessageTitle != null)
+        {
+            foreach (var a in Model.MessageTitle)
+            {
+                @a
+            }
+        }
+        </textarea>
+        <h5>
+            <textarea name="TextFromHtml" cols="60" rows="30" wrap="hard">
+@if (@Model.Message != null)
+{
+    foreach (var a in Model.Message)
+    {
+        @a
+    }
+}
+</textarea>
+        </h5>
+
+    </div>
+
+    <div class="layer1">
+        <p></p>
+        <div id="btns">
+            @for (var i = 1; i <= Model.GenresCount; i++)
+            {
+
+                <label class="checkbox-btn">
+                    <input type="checkbox" name="AreChecked" value="@i" @Model.GenresChecked[i - 1]>
+                    <span>@Model.GenresNames[i - 1]</span>
+                </label>
+
+            }
+            <button class="btn btn-info">Сохранить</button>
+        </div>
+    </div>
+</form>
