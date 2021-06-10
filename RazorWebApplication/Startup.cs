@@ -14,6 +14,8 @@ using System.Threading.Tasks;
 using RandomSongSearchEngine.Middleware;
 using System.Runtime.CompilerServices;
 
+//TODO: ÏÅÐÅÄ ÏÓÁËÈÊÀÖÈÅÉ ÍÅ ÇÀÁÓÄÜ ÓÁÐÀÒÜ ÏÎÄÊËÞ×ÅÍÈß Ê ÁÄ
+
 namespace RandomSongSearchEngine
 {
     public class Startup
@@ -27,7 +29,8 @@ namespace RandomSongSearchEngine
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddRazorPages();
+            //services.AddRazorPages();
+            services.AddMvc(options => { options.EnableEndpointRouting = false; });
             services.AddDbContext<DatabaseContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
         }
@@ -45,12 +48,13 @@ namespace RandomSongSearchEngine
             }
             //app.UseHttpsRedirection();
             app.UseStaticFiles();
-            app.UseRouting();
+            //app.UseRouting();
             app.UseAuthorization();
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapRazorPages();
-            });
+            app.UseMvcWithDefaultRoute();
+            //app.UseEndpoints(endpoints =>
+            //{
+            //    endpoints.MapRazorPages();
+            //});
 
             loggerFactory.AddFile(Path.Combine(Directory.GetCurrentDirectory(), "logger.txt"));
             var logger = loggerFactory.CreateLogger("FileLogger");

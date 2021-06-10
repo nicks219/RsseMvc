@@ -9,7 +9,7 @@
 </head>
 <body>
     <script type="text/javascript">
-        //check for Navigation Timing API support, 50% efficiency =)
+        @*//check for Navigation Timing API support, 50% efficiency =)
         if (window.performance) {
             //window.performance works fine on this browser
             if (performance.navigation.type == 1) {
@@ -20,13 +20,13 @@
                 //This page is returned
                 document.location.href = "@Url.Page("Index")";
             }
-        }
+        }*@
         //console.info("0: This page is not reloaded");
     </script>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">Рандом</a>
+                <a class="navbar-brand" asp-area="" asp-action="Index">Рандом</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -34,13 +34,13 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/AddText">Добавить</a>
+                            <a class="nav-link text-dark" asp-area="" asp-action="AddText">Добавить</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/ChangeText" asp-route-id=@Model.SavedTextId>Поменять</a>
+                            <a class="nav-link text-dark" asp-area="" asp-action="ChangeText" asp-route-id=@Model.SavedTextId>Поменять</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Catalog" asp-route-id=1>Каталог</a>
+                            <a class="nav-link text-dark" asp-area="" asp-action="Catalog" asp-route-id=1>Каталог</a>
                         </li>
                     </ul>
                 </div>

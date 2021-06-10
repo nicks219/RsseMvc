@@ -19,7 +19,8 @@ namespace RandomSongSearchEngine.Logger
         public static void LogId (this ILogger logger, BasePageModel model)
         {
             var modelId = model.GetHashCode();
-            var httpContextId = model.HttpContext.GetHashCode();
+            //костыли - у модели сейчас нет контекста
+            var httpContextId = "MockContext";// model.HttpContext.GetHashCode();
             var threadId = System.Threading.Thread.CurrentThread.ManagedThreadId;
             logger.LogInformation("[Model ID: {0} Thread ID: {1} HttpContextID: {2}]", modelId, threadId, httpContextId);
         }

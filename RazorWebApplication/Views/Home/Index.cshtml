@@ -1,9 +1,7 @@
-﻿@page
-@model IndexModel
+﻿@model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+  ViewData["Title"] = "Home page";
 }
-@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 <div class="text-center">
     <h1 class="display-4" onclick="hideMenu()">Рандом</h1>
@@ -31,7 +29,7 @@
     </h5>
 </div>
 
-<form method="post">
+<form asp-action = "Index" method ="post">
     <div class="layer1">
         <p></p>
         <div id="btns">
@@ -44,11 +42,15 @@
             </p>
             @for (var i = 1; i <= Model.GenresCount; i++)
             {
-                <label class="checkbox-btn">
-                    <input type="checkbox" name="AreChecked" value="@i" @Model.GenresChecked[i - 1]>
-                    <span style="line-height: 30px;">@Model.GenresNames[i - 1]</span>
-                </label>
-            }
+        <label class="checkbox-btn">
+            <input type="checkbox" name="AreChecked" value="@i" @Model.GenresChecked[i - 1]>
+            <span style="line-height: 30px;">@Model.GenresNames[i - 1]</span>
+        </label>            }
+
+            <div class="form-group">
+                <label>Your Message</label>
+                <input asp-for="Message" class="form-control" />
+            </div>
 
         </div>
     </div>
