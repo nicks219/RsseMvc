@@ -11,7 +11,7 @@ namespace RandomSongSearchEngine.BusinessLogic
 {
     public static class AddTextExtensions
     {
-        public static async Task OnGetAsync(this AddTextModel model)
+        public static async Task AddTextOnGetAsync(this AddTextModel model)
         {
             try
             {
@@ -28,11 +28,11 @@ namespace RandomSongSearchEngine.BusinessLogic
             }
         }
 
-        public static async Task OnPostAsync(this AddTextModel model)
+        public static async Task AddTextOnPostAsync(this AddTextModel model)
         {
             if (model.AreChecked == null || model.TextFromHtml == null || model.TitleFromHtml == null || model.AreChecked.Count == 0)
             {
-                await model.OnGetAsync();
+                await model.AddTextOnGetAsync();
                 return;
             }
             try
@@ -44,13 +44,13 @@ namespace RandomSongSearchEngine.BusinessLogic
                     await model.AddSongToDatabaseAsync(database);
                     await model.CreateTextAndTitleAsync(database, model.SavedTextId);
                 }
-                await model.OnGetAsync();//
+                await model.AddTextOnGetAsync();//
                 model.InitCheckedGenres();
             }
             catch (Exception e)
             {
                 model._logger.LogError(e, "[AddTextModel]");
-                await model.OnGetAsync();//
+                await model.AddTextOnGetAsync();//
             }
         }
     }

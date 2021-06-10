@@ -13,6 +13,8 @@ using RandomSongSearchEngine.BusinessLogic;
 
 namespace RandomSongSearchEngine.Controllers
 {
+    //MVC возвращает из вьюхи модель с null во всех полях кроме специально заполненных
+    //поэтому в HttpPost я пересоздаю scope и logger у моделек для сохранения работоспособности
     public class HomeController : Controller
     {
         private readonly ILogger<BaseMvcModel> _logger;
@@ -28,14 +30,14 @@ namespace RandomSongSearchEngine.Controllers
         public async Task<IActionResult> Index()
         {
             var model = new IndexModel(_scope, _logger);
-            await model.OnGetAsync();
+            await model.IndexOnGetAsync();
             return View(model);
         }
         [HttpPost]
         public async Task<IActionResult> Index(IndexModel model)
         {
             model._serviceScopeFactory = _scope;
-            await model.OnPostAsync();
+            await model.IndexOnPostAsync();
             return View(model);
         }
 
@@ -43,7 +45,7 @@ namespace RandomSongSearchEngine.Controllers
         public async Task<IActionResult> Catalog(int id)
         {
             var model = new CatalogModel(_scope, _logger);
-            await model.OnGetAsync(id);
+            await model.CatalogOnGetAsync(id);
             return View(model);
         }
         [HttpPost]
@@ -53,7 +55,7 @@ namespace RandomSongSearchEngine.Controllers
             model.NavigationButtons = oldModel.NavigationButtons;
             //model._serviceScopeFactory = _scope;
             //model._logger = _logger;
-            await model.OnPostAsync(id);
+            await model.CatalogOnPostAsync(id);
             return View(model);
         }
         /// <summary>
@@ -70,7 +72,7 @@ namespace RandomSongSearchEngine.Controllers
         public async Task<IActionResult> ChangeText(int id)
         {
             var model = new ChangeTextModel(_scope, _logger);
-            await model.OnGetAsync(id);
+            await model.ChangeTextOnGetAsync(id);
             return View(model);
         }
         [HttpPost]
@@ -78,7 +80,7 @@ namespace RandomSongSearchEngine.Controllers
         {
             model._serviceScopeFactory = _scope;
             model._logger = _logger;
-            await model.OnPostAsync(checkboxes);
+            await model.ChangeTextOnPostAsync(checkboxes);
             return View(model);
         }
 
@@ -86,7 +88,7 @@ namespace RandomSongSearchEngine.Controllers
         public async Task<IActionResult> AddText()
         {
             var model = new AddTextModel(_scope, _logger);
-            await model.OnGetAsync();
+            await model.AddTextOnGetAsync();
             return View(model);
         }
         [HttpPost]
@@ -94,7 +96,7 @@ namespace RandomSongSearchEngine.Controllers
         {
             model._serviceScopeFactory = _scope;
             model._logger = _logger;
-            await model.OnPostAsync();
+            await model.AddTextOnPostAsync();
             if (model.SavedTextId == 0)
             {
                 //чет не так, скорее всего песня с ткаим названием уже есть

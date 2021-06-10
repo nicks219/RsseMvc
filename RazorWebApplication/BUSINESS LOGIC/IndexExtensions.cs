@@ -12,7 +12,7 @@ namespace RandomSongSearchEngine.BusinessLogic
 {
     public static class IndexModelExtensions
     {
-        public static async Task OnGetAsync(this IndexModel model)
+        public static async Task IndexOnGetAsync(this IndexModel model)
         {
             try
             {
@@ -29,12 +29,12 @@ namespace RandomSongSearchEngine.BusinessLogic
             }
         }
 
-        public static async Task OnPostAsync(this IndexModel model)
+        public static async Task IndexOnPostAsync(this IndexModel model)
         {
             try
             {
                 await model.GetRandomSongAsync();
-                await model.OnGetAsync();
+                await model.IndexOnGetAsync();
             }
             catch (Exception e)
             {

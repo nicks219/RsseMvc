@@ -14,7 +14,7 @@ namespace RandomSongSearchEngine.BusinessLogic
 {
     public static class ChangeTextExtensinos
     {
-        public static async Task OnGetAsync(this ChangeTextModel model, int id)
+        public static async Task ChangeTextOnGetAsync(this ChangeTextModel model, int id)
         {
             model.SavedTextId = id;
             try
@@ -40,14 +40,14 @@ namespace RandomSongSearchEngine.BusinessLogic
             }
         }
 
-        public static async Task OnPostAsync(this ChangeTextModel model, string checkboxes)
+        public static async Task ChangeTextOnPostAsync(this ChangeTextModel model, string checkboxes)
         {
             model.InitialCheckboxes = model.DeserializeFromView(checkboxes);
             try
             {
                 if (model.AreChecked == null || model.TextFromHtml == null || model.TitleFromHtml == null || model.AreChecked.Count == 0)
                 {
-                    await model.OnGetAsync(model.SavedTextId);
+                    await model.ChangeTextOnGetAsync(model.SavedTextId);
                     return;
                 }
 
@@ -62,7 +62,7 @@ namespace RandomSongSearchEngine.BusinessLogic
             {
                 model._logger.LogError(e, "[ChangeTextModel]");
             }
-            await model.OnGetAsync(model.SavedTextId);
+            await model.ChangeTextOnGetAsync(model.SavedTextId);
         }
 
         /// <summary>

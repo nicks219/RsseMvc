@@ -11,7 +11,7 @@ namespace RandomSongSearchEngine.BusinessLogic
 {
     public static class CatalogModelExtensions
     {
-        public static async Task OnGetAsync(this CatalogModel model, int id)
+        public static async Task CatalogOnGetAsync(this CatalogModel model, int id)
         {
             model.PageNumber = id;
             try
@@ -28,7 +28,7 @@ namespace RandomSongSearchEngine.BusinessLogic
             }
         }
 
-        public static async Task OnPostAsync(this CatalogModel model, int id)
+        public static async Task CatalogOnPostAsync(this CatalogModel model, int id)
         {
             //Предполагается, что браузер прислал неиспорченные данные
             model.PageNumber = id;
@@ -52,7 +52,7 @@ namespace RandomSongSearchEngine.BusinessLogic
                     model.PageNumber--;
                 }
             }
-            await model.OnGetAsync(model.PageNumber);
+            await model.CatalogOnGetAsync(model.PageNumber);
         }
     }
 }
