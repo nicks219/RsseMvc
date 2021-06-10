@@ -15,10 +15,10 @@ namespace RandomSongSearchEngine.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<BasePageModel> _logger;
+        private readonly ILogger<BaseMvcModel> _logger;
         private readonly IServiceScopeFactory _scope;
 
-        public HomeController(IServiceScopeFactory serviceScopeFactory, ILogger<BasePageModel> logger)
+        public HomeController(IServiceScopeFactory serviceScopeFactory, ILogger<BaseMvcModel> logger)
         {
             _logger = logger;
             _scope = serviceScopeFactory;

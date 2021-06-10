@@ -24,10 +24,10 @@ namespace RandomSongSearchEngine.Models
     /// <summary>
     /// Вывод случайной песни по выбранным категориям
     /// </summary>
-    public class IndexModel : BasePageModel
+    public class IndexModel : BaseMvcModel
     {
         public IndexModel() { }
-        public IndexModel(IServiceScopeFactory serviceScopeFactory, ILogger<BasePageModel> logger) : base(serviceScopeFactory, logger) { }
+        public IndexModel(IServiceScopeFactory serviceScopeFactory, ILogger<BaseMvcModel> logger) : base(serviceScopeFactory, logger) { }
     }
 }
 

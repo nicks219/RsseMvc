@@ -15,10 +15,10 @@ namespace RandomSongSearchEngine.Models
     /// <summary>
     /// Изменение существующей песни
     /// </summary>
-    public class ChangeTextModel : BasePageModel
+    public class ChangeTextModel : BaseMvcModel
     {
         public ChangeTextModel() { }
-        public ChangeTextModel(IServiceScopeFactory serviceScopeFactory, ILogger<BasePageModel> logger) : base(serviceScopeFactory, logger) { }
+        public ChangeTextModel(IServiceScopeFactory serviceScopeFactory, ILogger<BaseMvcModel> logger) : base(serviceScopeFactory, logger) { }
 
         /// <summary>
         /// Сериализованный список категорий и Id песни

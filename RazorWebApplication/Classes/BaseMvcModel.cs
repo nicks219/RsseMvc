@@ -13,18 +13,18 @@ namespace RandomSongSearchEngine.Classes
     /// <summary>
     /// Базовый класс для моделей RazorPage
     /// </summary>
-    public class BasePageModel //: PageModel
+    public class BaseMvcModel //: PageModel
     {
         //protected readonly IServiceScopeFactory _serviceScopeFactory;
         public IServiceScopeFactory _serviceScopeFactory;
-        public ILogger<BasePageModel> _logger;
+        public ILogger<BaseMvcModel> _logger;
 
-        public BasePageModel() { }
+        public BaseMvcModel() { }
 
         //костыль, в финале удалить
-        protected BasePageModel(IServiceScopeFactory serviceScopeFactory) { }
+        protected BaseMvcModel(IServiceScopeFactory serviceScopeFactory) { }
 
-        public BasePageModel (IServiceScopeFactory serviceScopeFactory, ILogger<BasePageModel> logger)
+        public BaseMvcModel (IServiceScopeFactory serviceScopeFactory, ILogger<BaseMvcModel> logger)
         {
             //Console.Clear();
             GenresChecked = new List<string>();

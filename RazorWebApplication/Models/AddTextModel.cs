@@ -10,9 +10,9 @@ namespace RandomSongSearchEngine.Models
     /// <summary>
     /// Добавление новой песни
     /// </summary>
-    public class AddTextModel : BasePageModel
+    public class AddTextModel : BaseMvcModel
     {
         public AddTextModel() { }
-        public AddTextModel(IServiceScopeFactory serviceScopeFactory, ILogger<BasePageModel> logger) : base(serviceScopeFactory, logger) { }
+        public AddTextModel(IServiceScopeFactory serviceScopeFactory, ILogger<BaseMvcModel> logger) : base(serviceScopeFactory, logger) { }
     }
 }

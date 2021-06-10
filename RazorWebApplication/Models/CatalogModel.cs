@@ -13,12 +13,12 @@ namespace RandomSongSearchEngine.Models
     /// <summary>
     /// Каталог песен
     /// </summary>
-    public class CatalogModel : BasePageModel
+    public class CatalogModel : BaseMvcModel
     {
         //private readonly ILogger<BasePageModel> _logger;
         public CatalogModel() { }
 
-        public CatalogModel(IServiceScopeFactory serviceScopeFactory, ILogger<BasePageModel> logger) : base(serviceScopeFactory, logger)
+        public CatalogModel(IServiceScopeFactory serviceScopeFactory, ILogger<BaseMvcModel> logger) : base(serviceScopeFactory, logger)
         {
             //_logger = logger;
             //pageSize = 3;

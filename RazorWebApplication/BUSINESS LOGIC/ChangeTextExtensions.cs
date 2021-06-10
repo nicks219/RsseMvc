@@ -45,7 +45,7 @@ namespace RandomSongSearchEngine.BusinessLogic
             model.InitialCheckboxes = model.DeserializeFromView(checkboxes);
             try
             {
-                if (model.AreChecked.Count == 0 || model.TextFromHtml == null || model.TitleFromHtml == null)
+                if (model.AreChecked == null || model.TextFromHtml == null || model.TitleFromHtml == null || model.AreChecked.Count == 0)
                 {
                     await model.OnGetAsync(model.SavedTextId);
                     return;
