@@ -18,7 +18,7 @@ namespace RandomSongSearchEngine.BusinessLogic
             {
                 using (var scope = model._serviceScopeFactory.CreateScope())
                 {
-                    var database = scope.ServiceProvider.GetRequiredService<DatabaseContext>();
+                    var database = scope.ServiceProvider.GetRequiredService<RsseContext>();
                     await model.CreateCheckboxesNamesAsync(database: database);
                 }
                 model.InitCheckedGenres();
@@ -53,7 +53,7 @@ namespace RandomSongSearchEngine.BusinessLogic
             }
             using (var scope = model._serviceScopeFactory.CreateScope())
             {
-                var database = scope.ServiceProvider.GetRequiredService<DatabaseContext>();
+                var database = scope.ServiceProvider.GetRequiredService<RsseContext>();
                 int randomResult = await database.RandomizatorAsync(model.AreChecked);
                 if (randomResult == 0)
                 {

@@ -20,7 +20,7 @@ namespace RandomSongSearchEngine.Classes
         /// </summary>
         /// <param name="database">Контекст базы данных</param>
         /// <returns></returns>
-        public static IQueryable<Tuple<string, int>> CreateCheckboxesDataSql(this DatabaseContext database)//
+        public static IQueryable<Tuple<string, int>> CreateCheckboxesDataSql(this RsseContext database)//
         {
             IQueryable<Tuple<string, int>> res = database.Genre
                 .Select(g => new Tuple<string, int>(g.Genre, g.GenreTextInGenre.Count))
@@ -34,7 +34,7 @@ namespace RandomSongSearchEngine.Classes
         /// <param name="database">Контекст базы данных</param>
         /// <param name="chosenOnes">Отмеченые категории</param>
         /// <returns></returns>
-        public static IQueryable<int> CreateSongsListRandomizerSql(this DatabaseContext database, int[] chosenOnes)
+        public static IQueryable<int> CreateSongsListRandomizerSql(this RsseContext database, int[] chosenOnes)
         {
             //TODO определить какой лучше:
             //IQueryable<int> songsCollection = database.GenreText//
@@ -55,7 +55,7 @@ namespace RandomSongSearchEngine.Classes
         /// <param name="savedLastViewedPage">Текущая страница</param>
         /// <param name="pageSize">Количество песен на странице</param>
         /// <returns></returns>
-        public static IQueryable<Tuple<string, int>> CreateSongsDataCatalogViewSql(this DatabaseContext database, int savedLastViewedPage, int pageSize)
+        public static IQueryable<Tuple<string, int>> CreateSongsDataCatalogViewSql(this RsseContext database, int savedLastViewedPage, int pageSize)
         {
             IQueryable<Tuple<string, int>> titleAndTextID = database.Text
                 .OrderBy(s => s.Title)
@@ -73,7 +73,7 @@ namespace RandomSongSearchEngine.Classes
         /// <param name="database">Контекст базы данных</param>
         /// <param name="textId">ID песни</param>
         /// <returns></returns>
-        public static IQueryable<Tuple<string, string>> CreateTitleAndTextSql(this DatabaseContext database, int textId)
+        public static IQueryable<Tuple<string, string>> CreateTitleAndTextSql(this RsseContext database, int textId)
         {
             IQueryable<Tuple<string, string>> titleAndText = database.Text
                 .Where(p => p.TextID == textId)
@@ -88,7 +88,7 @@ namespace RandomSongSearchEngine.Classes
         /// <param name="database">Контекст базы данных</param>
         /// <param name="savedTextId">ID песни</param>
         /// <returns></returns>
-        public static IQueryable<int> CreateCheckedListChangeViewSql(this DatabaseContext database, int savedTextId)
+        public static IQueryable<int> CreateCheckedListChangeViewSql(this RsseContext database, int savedTextId)
         {
             IQueryable<int> checkedList = database.GenreText
                 .Where(p => p.TextInGenreText.TextID == savedTextId)
@@ -103,7 +103,7 @@ namespace RandomSongSearchEngine.Classes
         /// <param name="initialCheckboxes">Оригинальные категории песни</param>
         /// <param name="dt">Данные для песни</param>
         /// <returns></returns>
-        public static async Task ChangeSongInDatabaseAsync(this DatabaseContext db, List<int> initialCheckboxes, DataTransfer dt)
+        public static async Task ChangeSongInDatabaseAsync(this RsseContext db, List<int> initialCheckboxes, DataTransfer dt)
         {
             //если имя заменено на существующее, то залоггируется исключение.
             //быстрой проверки нет - ресурсоёмко и ошибка редкая.
@@ -149,7 +149,7 @@ namespace RandomSongSearchEngine.Classes
         /// <param name="db">Контекст базы данных</param>
         /// <param name="dt">Данные для песни</param>
         /// <returns>Возвращает ID добавленной песни или ноль при ошибке</returns>
-        public static async Task<int> AddSongToDatabaseAsync(this DatabaseContext db, DataTransfer dt)
+        public static async Task<int> AddSongToDatabaseAsync(this RsseContext db, DataTransfer dt)
         {
             using (IDbContextTransaction t = await db.Database.BeginTransactionAsync())
             {
@@ -186,7 +186,7 @@ namespace RandomSongSearchEngine.Classes
         /// </summary>
         /// <param name="db">Контекст базы данных</param>
         /// <param name="title">Название песни</param>
-        public static void CheckNameExistsError(this DatabaseContext db, string title)
+        public static void CheckNameExistsError(this RsseContext db, string title)
         {
             int r = db.Text
                 .Where(p => p.Title == title)
@@ -204,7 +204,7 @@ namespace RandomSongSearchEngine.Classes
         /// <param name="db">Контекст базы данных</param>
         /// <param name="savedTextId">ID песни</param>
         /// <param name="forAddition">Категории для добавления</param>
-        public static void CheckGenresExistsError(this DatabaseContext db, int savedTextId, HashSet<int> forAddition)
+        public static void CheckGenresExistsError(this RsseContext db, int savedTextId, HashSet<int> forAddition)
         {
             if (forAddition.Count > 0)
             {

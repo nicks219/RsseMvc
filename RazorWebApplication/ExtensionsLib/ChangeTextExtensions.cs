@@ -27,7 +27,7 @@ namespace RandomSongSearchEngine.BusinessLogic
                 }
                 using (var scope = model._serviceScopeFactory.CreateScope())
                 {
-                    var database = scope.ServiceProvider.GetRequiredService<DatabaseContext>();
+                    var database = scope.ServiceProvider.GetRequiredService<RsseContext>();
                     await model.CreateTextAndTitleAsync(database, model.SavedTextId);
                     await model.CreateCheckboxesNamesAsync(database);
                     model.InitialCheckboxes = await model.CreateCheckedGenresAsync(database);
@@ -53,7 +53,7 @@ namespace RandomSongSearchEngine.BusinessLogic
 
                 using (var scope = model._serviceScopeFactory.CreateScope())
                 {
-                    var database = scope.ServiceProvider.GetRequiredService<DatabaseContext>();
+                    var database = scope.ServiceProvider.GetRequiredService<RsseContext>();
                     await model.ChangeSongInDatabaseAsync(database, model.InitialCheckboxes);
 
                 }
@@ -104,7 +104,7 @@ namespace RandomSongSearchEngine.BusinessLogic
         /// </summary>
         /// <param name="database">Контекст базы данных</param>
         /// <returns>Список жанров</returns>
-        private static async Task<List<int>> CreateCheckedGenresAsync(this ChangeTextModel model, DatabaseContext database)
+        private static async Task<List<int>> CreateCheckedGenresAsync(this ChangeTextModel model, RsseContext database)
         {
             List<int> checkedList = await database.CreateCheckedListChangeViewSql(model.SavedTextId).ToListAsync();
             foreach (int i in checkedList)

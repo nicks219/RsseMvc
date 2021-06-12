@@ -20,7 +20,7 @@ namespace RandomSongSearchEngine.Classes
         /// <param name="database">Контекст базы данных</param>
         /// <param name="areChecked">Список выбраных категорий</param>
         /// <returns></returns>
-        public static async Task<int> RandomizatorAsync(this DatabaseContext database, List<int> areChecked)
+        public static async Task<int> RandomizatorAsync(this RsseContext database, List<int> areChecked)
         {
                 int[] chosenOnes = areChecked.ToArray();
                 int howManySongs = await database.CreateSongsListRandomizerSql(chosenOnes).CountAsync();//

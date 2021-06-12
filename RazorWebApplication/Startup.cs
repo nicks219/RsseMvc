@@ -31,7 +31,7 @@ namespace RandomSongSearchEngine
         {
             //services.AddRazorPages();
             services.AddMvc(options => { options.EnableEndpointRouting = false; });
-            services.AddDbContext<DatabaseContext>(options =>
+            services.AddDbContext<RsseContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
         }
 

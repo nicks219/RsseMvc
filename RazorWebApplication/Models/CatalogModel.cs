@@ -26,7 +26,7 @@ namespace RandomSongSearchEngine.Models
             {
                 using (var scope = _serviceScopeFactory.CreateScope())//
                 {
-                    var database = scope.ServiceProvider.GetRequiredService<DatabaseContext>();//
+                    var database = scope.ServiceProvider.GetRequiredService<RsseContext>();//
                     SongsCount = database.Text.Count();
                 }
             }

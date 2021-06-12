@@ -6,13 +6,13 @@ namespace RandomSongSearchEngine.DBContext
     /// <summary>
     /// Контекст (таблицы) базы данных
     /// </summary>
-    public class DatabaseContext : DbContext
+    public class RsseContext : DbContext
     {
         /// <summary>
         /// Конструктор, конфигурирующий контекст базы данных
         /// </summary>
         /// <param name="option"></param>
-        public DatabaseContext(DbContextOptions<DatabaseContext> option) : base(option)
+        public RsseContext(DbContextOptions<RsseContext> option) : base(option)
         {
         }
 

@@ -92,7 +92,7 @@ namespace RandomSongSearchEngine.Classes
         /// <summary>
         /// Модель базы данных с песнями, жанрами и их связью
         /// </summary>
-        protected DatabaseContext Database { get; set; }
+        protected RsseContext Database { get; set; }
 
         /// <summary>
         /// Изменение отмеченных жанров в списке на "checked"
@@ -135,7 +135,7 @@ namespace RandomSongSearchEngine.Classes
         /// <param name="database">Контекст базы данных</param>
         /// <param name="initialCheckboxes">Новый список отмеченных во вьюхе жанров</param>
         /// <returns></returns>
-        public async Task ChangeSongInDatabaseAsync(DatabaseContext database, List<int> initialCheckboxes)
+        public async Task ChangeSongInDatabaseAsync(RsseContext database, List<int> initialCheckboxes)
         {
             DataTransfer dt = new DataTransfer
             {
@@ -156,7 +156,7 @@ namespace RandomSongSearchEngine.Classes
         /// </summary>
         /// <param name="database">Контекст базы данных</param>
         /// <returns></returns>
-        public async Task AddSongToDatabaseAsync(DatabaseContext database)
+        public async Task AddSongToDatabaseAsync(RsseContext database)
         {
             DataTransfer dt = new DataTransfer
             {
@@ -177,7 +177,7 @@ namespace RandomSongSearchEngine.Classes
         /// <param name="database">Контекст базы данных</param>
         /// <param name="textId">ID песни</param>
         /// <returns></returns>
-        public async Task CreateTextAndTitleAsync(DatabaseContext database, int textId)
+        public async Task CreateTextAndTitleAsync(RsseContext database, int textId)
         {
             //метод оставляет на экране ранее введенный текст в случае большинства исключений
             var r = await database.CreateTitleAndTextSql(textId).ToListAsync();
@@ -198,7 +198,7 @@ namespace RandomSongSearchEngine.Classes
         /// </summary>
         /// <param name="database">Контекст базы данных</param>
         /// <returns></returns>
-        public async Task CreateCheckboxesNamesAsync(DatabaseContext database)
+        public async Task CreateCheckboxesNamesAsync(RsseContext database)
         {
             List<Tuple<string, int>> genresNames = await database.CreateCheckboxesDataSql().ToListAsync();
 
@@ -226,7 +226,7 @@ namespace RandomSongSearchEngine.Classes
         /// <param name="savedLastViewedPage">Текущая страница каталога</param>
         /// <param name="pageSize">Количество песен на странице</param>
         /// <returns></returns>
-        public async Task CreateSongsDataCatalogViewAsync(DatabaseContext database, int savedLastViewedPage, int pageSize)
+        public async Task CreateSongsDataCatalogViewAsync(RsseContext database, int savedLastViewedPage, int pageSize)
         {
             TitleAndTextID = await database.CreateSongsDataCatalogViewSql(savedLastViewedPage, pageSize).ToListAsync();
             SavedTextId = TitleAndTextID[0].Item2;

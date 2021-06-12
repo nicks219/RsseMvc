@@ -17,7 +17,7 @@ namespace RandomSongSearchEngine.BusinessLogic
             {
                 using (var scope = model._serviceScopeFactory.CreateScope())//
                 {
-                    var database = scope.ServiceProvider.GetRequiredService<DatabaseContext>();//
+                    var database = scope.ServiceProvider.GetRequiredService<RsseContext>();//
 
                     await model.CreateCheckboxesNamesAsync(database);
                 }
@@ -39,7 +39,7 @@ namespace RandomSongSearchEngine.BusinessLogic
             {
                 using (var scope = model._serviceScopeFactory.CreateScope())//
                 {
-                    var database = scope.ServiceProvider.GetRequiredService<DatabaseContext>();//
+                    var database = scope.ServiceProvider.GetRequiredService<RsseContext>();//
 
                     await model.AddSongToDatabaseAsync(database);
                     await model.CreateTextAndTitleAsync(database, model.SavedTextId);
