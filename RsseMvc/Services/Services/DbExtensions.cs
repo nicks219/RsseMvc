@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using RandomSongSearchEngine.DBContext;
 using RandomSongSearchEngine.DBEntities;
 
-namespace RandomSongSearchEngine.Classes
+namespace RandomSongSearchEngine.Services
 {
     /// <summary>
     /// Экстеншены для работы с бд

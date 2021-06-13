@@ -1,5 +1,5 @@
 using Microsoft.Extensions.Logging;
-using RandomSongSearchEngine.Classes;
+using RandomSongSearchEngine.Services;
 using System;
 using System.Threading.Tasks;
 using RandomSongSearchEngine.DBContext;

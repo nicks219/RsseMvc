@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using RandomSongSearchEngine.Classes;
+using RandomSongSearchEngine.Services;
 using RandomSongSearchEngine.DBContext;
 
 namespace RandomSongSearchEngine.Models

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using RandomSongSearchEngine.DBContext;
 
-namespace RandomSongSearchEngine.Classes
+namespace RandomSongSearchEngine.Services
 {
     /// <summary>
     /// Выборка случайной песни

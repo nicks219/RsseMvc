@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace RandomSongSearchEngine.Classes
+namespace RandomSongSearchEngine.Services
 {
     /// <summary>
     /// Структура для передачи данных песни

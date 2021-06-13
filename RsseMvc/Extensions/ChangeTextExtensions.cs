@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using RandomSongSearchEngine.Classes;
+using RandomSongSearchEngine.Services;
 using RandomSongSearchEngine.DBContext;
 using RandomSongSearchEngine.Models;
 using System;

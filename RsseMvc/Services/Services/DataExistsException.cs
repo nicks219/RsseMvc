@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace RandomSongSearchEngine.Classes
+namespace RandomSongSearchEngine.Services
 {
     /// <summary>
     /// Моё исключение

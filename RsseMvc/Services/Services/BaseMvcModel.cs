@@ -8,16 +8,16 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using RandomSongSearchEngine.DBContext;
 
-namespace RandomSongSearchEngine.Classes
+namespace RandomSongSearchEngine.Services
 {
     /// <summary>
     /// Базовый класс для моделей RazorPage
     /// </summary>
-    public class BaseMvcModel //: PageModel
+    public abstract class BaseMvcModel //: PageModel
     {
         //protected readonly IServiceScopeFactory _serviceScopeFactory;
-        public IServiceScopeFactory _serviceScopeFactory;
-        public ILogger<BaseMvcModel> _logger;
+        public IServiceScopeFactory _serviceScopeFactory { get; set; }
+        public ILogger<BaseMvcModel> _logger { get; set; }
 
         public BaseMvcModel() { }
 

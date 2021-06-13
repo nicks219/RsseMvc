@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
-using RandomSongSearchEngine.Classes;
+using RandomSongSearchEngine.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
